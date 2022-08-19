@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  
+  <title>Frontend Mentor | Intro component with sign up form</title>
+
+  
+  <style>
+    
+    /* reset */
+
+    *, *::before, *::after {
+  box-sizing: border-box;
+    }
+    * {
+      margin: 0;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+    input, button, textarea, select {
+      font: inherit;
+    }
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+    #root, #__next {
+      isolation: isolate;
+    }
+
+    /* CUSTOM STYLES */
+    :root {
+      --white:#ffffff;
+      --red:hsl(0, 100%, 74%) ;
+      --green:hsl(154, 59%, 51%);
+      --blue:hsl(248, 32%, 49%);
+      --dark_blue:hsl(249, 10%, 26%) ;
+      --dark_blue_faded:hsla(249, 10%, 26%, 0.96) ;
+      --grey_blue:hsl(246, 25%, 77%);
+    }
+
+    body {
+      background-image: url('images/bg-intro-mobile.png');
+      background-size:cover;
+      background-repeat: repeat;
+      background-position: center center;
+      font-family: Poppins, arial, sans-serif;
+      font-weight:400;
+      font-size:14px;
+      line-height:1.6em;
+    }
+
+    main {
+      max-width: 760px;
+      min-height: 100vh;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    h1, .h1 {
+      font-weight:600;
+      font-size:2em;
+      line-height:1.25em;
+    }
+    @media screen and (min-width:750px){
+      body{
+        background-image: url('images/bg-intro-desktop.png');
+        font-size:15px;
+      }
+    }
+    @media screen and (min-width:1200px){
+      main {
+        max-width:1200px;
+        margin:auto;
+        height:100vh;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:4em;
+        align-items: center;
+        justify-content:center;
+      }
+      h1, .h1 {
+        font-size:4em;
+        font-weight:700;
+        line-height:1.2em;
+      }
+    }
+
+    /*-- COLOURS ---*/
+
+    .red {
+      color:var(--red);
+    }
+
+    .white{
+      color:var(--white);
+    }
+
+    .dark-blue {
+      color:var(--dark_blue);
+    }
+
+    .grey-blue {
+      color:var(--grey_blue);
+    }
+
+    .bg_red {
+      background-color:var(--red);
+    }
+
+    .bg_white{
+      background-color:var(--white);
+    }
+
+    .bg_blue {
+      background-color:var(--blue);
+    }
+
+    .bg_dark-blue {
+      background-color:var(--dark_blue);
+    }
+
+    .bg_grey-blue {
+      background-color:var(--grey_blue);
+    }
+
+    /*-- UTILITIES --*/
+
+    .text-center, .text-center-mob {
+      text-align:center;
+    }
+
+    @media screen and (min-width:1200px){
+      .text-center-mob {
+      text-align:left;
+      }
+    }
+
+    .rounded {
+      border-radius:0.5em;
+    }
+
+    .bold {
+      font-weight:600;
+    }
+    
+    .shadow {
+      box-shadow: 0 0.5em rgba(0,0,0,0.1);
+    }
+
+    /*-- LAYOUT --*/
+
+    .pad_all--f1 {
+      padding: 1em;
+    }
+
+    .pad_all--f1-half {
+      padding: 1.5em;
+    }
+
+    .pad_all--f2 {
+      padding: 2em;
+    }
+
+    .pad_all--f3 {
+      padding: 3em;
+    }
+
+    .pad_all--f4 {
+      padding: 4em;
+    }
+
+    .pad_top--f1 {
+      padding-top: 1em;
+    }
+
+    .pad_top--f2 {
+      padding-top: 2em;
+    }
+
+    .pad_top--f3 {
+      padding-top: 3em;
+    }
+
+    .pad_top--f4 {
+      padding-top: 4em;
+    }
+
+    .pad_bottom--f1 {
+      padding-bottom: 1em;
+    }
+
+    .pad_bottom--f2 {
+      padding-bottom: 2em;
+    }
+
+    .pad_bottom--f3 {
+      padding-bottom: 3em;
+    }
+
+    .pad_bottom--f4 {
+      padding-bottom: 4em;
+    }
+
+    .pad_left--f1 {
+      padding-left: 1em;
+    }
+
+    .pad_left--f2 {
+      padding-left: 2em;
+    }
+
+    .pad_left--f3 {
+      padding-left: 3em;
+    }
+    
+    .pad_left--f4 {
+      padding-left: 4em;
+    }
+
+    .pad_left--f5 {
+      padding-left: 5em;
+    }
+
+    .pad_right--f1 {
+      padding-right: 1em;
+    }
+
+    .pad_right--f2 {
+      padding-right: 2em;
+    }
+
+    .pad_right--f3 {
+      padding-right: 3em;
+    }
+
+    .pad_right--f4 {
+      padding-right: 4em;
+    }
+
+    .pad_right--f5 {
+      padding-right: 5em;
+    }
+
+    .marg_top--f1 {
+      margin-top: 1em;
+    }
+
+    .marg_top--f2 {
+      margin-top: 2em;
+    }
+
+    .marg_top--f3 {
+      margin-top: 3em;
+    }
+
+    .marg_top--f4 {
+      margin-top: 4em;
+    }
+
+    .marg_bottom--f1 {
+      margin-bottom: 1em;
+    }
+
+    .marg_bottom--f2 {
+      margin-bottom: 2em;
+    }
+
+    .marg_bottom--f3 {
+      margin-bottom: 3em;
+    }
+
+    .marg_bottom--f4 {
+      margin-bottom: 4em;
+    }
+
+    @media screen and (min-width:1200px){
+      
+      .pad_all--f1-half {
+        padding:3em;
+      }
+    }
+    /*-- FORM --*/
+    input {
+      width:100%;
+      font-size:0.9em;
+      line-height:0.1em;
+      padding:1em;
+      border:1px solid var(--grey_blue);
+      border-radius:0.3em;
+      color: var(--dark_blue_faded);
+      font-weight:600;
+      position:relative;
+    }
+
+    input:not(:first-of-type) {
+      margin-top:1em;
+    }
+
+    input:focus {
+      border:1px solid var(--dark_blue);
+    }
+
+    input[type=submit] {
+      background-color:var(--green);
+      color:var(--white);
+      padding:1.7em 1.7em 1.5em 1.7em;
+      box-shadow: 0 0.3em #32b981;
+      border:0;
+      font-weight:400;
+      margin-bottom:1em;
+      cursor:pointer;
+    }
+
+    input.error {
+      border:1px solid var(--red);
+      color:var(--red);
+      background: url('images/icon-error.svg')95% no-repeat;
+    }
+    
+    @media screen and (min-width:1200px) {
+      input.error {
+        background: url('images/icon-error.svg')98% no-repeat;
+     }
+    }
+
+    label.error {
+      color:var(--red);
+      font-size:0.8em;
+      text-align:right;
+      display:block;
+    }
+
+    .terms {
+      font-size:0.8em;
+      width:84%;
+      margin:auto;
+    }
+
+    .terms a {
+      color:var(--red);
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    /* --- MISCELLANEOUS ---*/
+
+    aside {
+      padding-left:8em;
+      padding-right:8em;
+    }
+
+  </style>
+</head>
+<body class="bg_red">
+  <main class="pad_all--f1-half pad_top--f4 pad_bottom--f4">
+    <div>
+      <h1 class="white text-center-mob pad_bottom--f1 ">Learn to code by watching others</h1>
+      <p class="white text-center-mob pad_bottom--f4 ">See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+    </div>
+    <div>
+      <aside class="rounded bg_blue white text-center-mob pad_all--f1 pad_left--f5 pad_right--f5 marg_bottom--f2 shadow">
+        <p><span class="bold">Try it free 7 days</span> then $20/mo. thereafter</p>
+      </aside>
+      <form action="" name="login" class="rounded bg_white pad_all--f1-half shadow">
+        <input type="text" name="fname" id="fname" placeholder="First Name">
+        <input type="text" name="lname" id="lname" placeholder="Last Name">
+        <input type="text" name="email" id="email" placeholder="Email Address">
+        <input type="text" name="password" id="password" placeholder="Password">
+        <input type="submit" id="submit-button"value="CLAIM YOUR FREE TRIAL">
+        <p class="terms grey-blue text-center-mob">By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
+      </form>
+    </div>
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+  <script>
+    $(function(){
+      
+      $("form[name='login']").validate({
+        rules: {
+          fname:"required",
+          lname: "required",
+          password: "required",
+          email: {
+            required: true,
+            email:true
+          },
+        },
+        // Specify validation error messages
+        messages: {
+          fname: "First Name cannot be empty",
+          lname: "Last Name cannot be empty",
+          password: "Password cannot be empty",
+          email: {
+            required: "Email cannot be empty",
+            email: "Looks like this is not an email"
+          },
+        },
+        errorClass:"error",
+       
+        // Make sure the form is submitted to the destination defined
+        // in the "action" attribute of the form when valid
+        submitHandler: function(form) {
+          form.submit();
+        },
+      })
+
+    })
+  </script>
+</body>
+</html>
